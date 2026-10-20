@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   CompeteFlow Design System — Friendly Modern UI Theme
+   Inspired by soft rounded card, vibrant gradient & friendly SaaS dashboard
+   ============================================================================ */
+
+:root {
+  /* Light Theme — Soft, Warm, Friendly Canvas */
+  --background: #f6f8fc;
+  --foreground: #1e293b;
+  --surface-900: #ffffff;
+  --surface-800: #f1f5f9;
+  --surface-700: #e2e8f0;
+  --surface-600: #cbd5e1;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --brand-primary: #6366f1; /* Vibrant Friendly Indigo */
+  --brand-subtle: rgba(99, 102, 241, 0.1);
+  --brand-border: rgba(99, 102, 241, 0.2);
+
+  --urgent: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  --success: #10b981;
+
+  --border: rgba(226, 232, 240, 0.85);
+  --border-subtle: #f1f5f9;
+
+  --sidebar-width: 240px;
+  --topnav-height: 68px;
+}
+
+.dark {
+  /* Dark Theme — Deep Indigo Slate */
+  --background: #0f1322;
+  --foreground: #f8fafc;
+  --surface-900: #181d33;
+  --surface-800: #222845;
+  --surface-700: #333d66;
+  --surface-600: #475585;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --brand-primary: #818cf8;
+  --brand-subtle: rgba(129, 140, 248, 0.15);
+  --brand-border: rgba(129, 140, 248, 0.25);
+
+  --urgent: #f87171;
+  --warning: #fbbf24;
+  --info: #60a5fa;
+  --success: #34d399;
+
+  --border: rgba(51, 61, 102, 0.6);
+  --border-subtle: rgba(34, 40, 69, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-900 dark:text-white font-extrabold tracking-tight;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
+
+/* ============================================================================
+   Component Utilities — Friendly Card, Pill Badges & Buttons
+   ============================================================================ */
+
+@layer components {
+  /* Extra-rounded friendly cards */
+  .card {
+    @apply bg-white dark:bg-[#181d33] border border-slate-100/90 dark:border-slate-800/80 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.03)] dark:shadow-none transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-[0_15px_35px_rgba(99,102,241,0.08)] hover:-translate-y-0.5 hover:border-indigo-100 dark:hover:border-indigo-900/40;
+  }
+
+  /* Priority badges */
+  .badge-urgent {
+    @apply bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .badge-high {
+    @apply bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .badge-medium {
+    @apply bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .badge-low {
+    @apply bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/80 dark:border-slate-700 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+
+  /* Status badges */
+  .status-in_progress {
+    @apply bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .status-registered {
+    @apply bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .status-draft {
+    @apply bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .status-finalist {
+    @apply bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .status-completed {
+    @apply bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+  .status-archived {
+    @apply bg-slate-100 dark:bg-slate-800 text-slate-500 border border-slate-200 dark:border-slate-700 font-bold rounded-full px-2.5 py-0.5 text-[11px];
+  }
+
+  /* Form inputs — Rounded pills */
+  .input-base {
+    @apply w-full bg-slate-50/90 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-800 transition-all;
+  }
+
+  /* Friendly Buttons with Soft Drop-Shadows */
+  .btn-primary {
+    @apply px-5 py-2.5 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-xs sm:text-sm transition-all duration-200 shadow-md shadow-indigo-500/20 hover:shadow-indigo-500/35 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-indigo-500/40;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-200 font-bold text-xs sm:text-sm border border-slate-200/90 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-200 shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-indigo-500/20;
+  }
+
+  .btn-ghost {
+    @apply px-3.5 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-semibold transition-colors;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2.5 rounded-2xl bg-red-500/10 hover:bg-red-500/20 text-red-600 dark:text-red-400 font-bold text-xs sm:text-sm border border-red-500/20 transition-colors;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Progress Bar */
+.progress-bar {
+  @apply w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full rounded-full transition-all duration-500 ease-out;
+}
+
+/* Sidebar Layout */
+.sidebar-item {
+  @apply flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100/70 dark:hover:bg-slate-800/60 transition-all cursor-pointer select-none;
+}
+
+.sidebar-item-active {
+  @apply text-white bg-indigo-600 hover:bg-indigo-600 font-bold shadow-md shadow-indigo-500/25;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  @apply fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 backdrop-blur-md p-4;
+}
+
+.modal-content {
+  @apply bg-white dark:bg-[#181d33] border border-slate-100 dark:border-slate-800 rounded-3xl shadow-2xl w-full max-h-[90vh] overflow-y-auto animate-scale-in text-slate-900 dark:text-slate-100;
+}
+
+@media (min-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
